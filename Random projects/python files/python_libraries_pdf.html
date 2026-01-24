@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Standard Library Reference</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        
+        pre code {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .example-box {
+            background: #e8f4f8;
+            border: 1px solid #b8dce8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .example-box h4 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            padding: 5px 0;
+        }
+        
+        .toc a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="no-print" onclick="window.print()">📄 Download as PDF</button>
+        
+        <h1>Python Standard Library Reference Guide</h1>
+        <p><strong>Complete Syntax & Examples</strong></p>
+        <p>Date: January 24, 2026</p>
+        
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#os">1. os - Operating System Interface</a></li>
+                <li><a href="#sys">2. sys - System Parameters</a></li>
+                <li><a href="#datetime">3. datetime - Date and Time</a></li>
+                <li><a href="#random">4. random - Random Numbers</a></li>
+                <li><a href="#math">5. math - Mathematical Functions</a></li>
+                <li><a href="#json">6. json - JSON Operations</a></li>
+                <li><a href="#re">7. re - Regular Expressions</a></li>
+                <li><a href="#collections">8. collections - Specialized Containers</a></li>
+                <li><a href="#itertools">9. itertools - Iterator Functions</a></li>
+                <li><a href="#pathlib">10. pathlib - Object-oriented Paths</a></li>
+                <li><a href="#csv">11. csv - CSV File Handling</a></li>
+                <li><a href="#time">12. time - Time Operations</a></li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="os">1. os - Operating System Interface</h2>
+        <p>Provides functions for interacting with the operating system.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>import os
+
+# Directory operations
+os.getcwd()                    # Get current working directory
+os.chdir(path)                 # Change directory
+os.listdir(path)               # List directory contents
+os.mkdir(path)                 # Create directory
+os.makedirs(path)              # Create nested directories
+os.rmdir(path)                 # Remove directory
+
+# File operations
+os.remove(path)                # Delete file
+os.rename(old, new)            # Rename file/directory
+
+# Path operations
+os.path.join(path1, path2)     # Join paths
+os.path.exists(path)           # Check if path exists
+os.path.isfile(path)           # Check if file
+os.path.isdir(path)            # Check if directory
+os.path.basename(path)         # Get filename
+os.path.dirname(path)          # Get directory name
+os.path.abspath(path)          # Get absolute path</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: List all .txt files</h4>
+            <pre><code>import os
+
+# List all .txt files in current directory
+txt_files = [f for f in os.listdir('.') if f.endswith('.txt')]
+print(f"Found {len(txt_files)} text files: {txt_files}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Create directory structure</h4>
+            <pre><code>import os
+
+# Create nested directories
+project_structure = ['data', 'src', 'tests', 'docs']
+for folder in project_structure:
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+        print(f"Created: {folder}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: Find files by extension</h4>
+            <pre><code>import os
+
+def find_files(directory, extension):
+    found = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(extension):
+                found.append(os.path.join(root, file))
+    return found
+
+python_files = find_files('.', '.py')
+print(f"Python files: {len(python_files)}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: File size calculator</h4>
+            <pre><code>import os
+
+def get_directory_size(path):
+    total = 0
+    for entry in os.scandir(path):
+        if entry.is_file():
+            total += entry.stat().st_size
+        elif entry.is_dir():
+            total += get_directory_size(entry.path)
+    return total
+
+size = get_directory_size('.')
+print(f"Directory size: {size / 1024:.2f} KB")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="sys">2. sys - System-specific Parameters</h2>
+        <p>Access to system-specific parameters and functions.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>import sys
+
+sys.argv                       # Command line arguments
+sys.exit([status])             # Exit program
+sys.path                       # Module search paths
+sys.version                    # Python version
+sys.platform                   # Platform identifier
+sys.stdin, sys.stdout, sys.stderr  # Standard streams</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: Command-line argument parser</h4>
+            <pre><code>import sys
+
+if len(sys.argv) < 2:
+    print("Usage: python script.py <name> <age>")
+    sys.exit(1)
+
+name = sys.argv[1]
+age = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+print(f"Hello {name}, age {age}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Python version checker</h4>
+            <pre><code>import sys
+
+required_version = (3, 7)
+if sys.version_info < required_version:
+    print(f"Python {required_version[0]}.{required_version[1]}+ required")
+    sys.exit(1)
+    
+print(f"Running Python {sys.version_info.major}.{sys.version_info.minor}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: Redirect output</h4>
+            <pre><code>import sys
+
+# Save original stdout
+original_stdout = sys.stdout
+
+# Redirect to file
+with open('output.txt', 'w') as f:
+    sys.stdout = f
+    print("This goes to file")
+    
+# Restore stdout
+sys.stdout = original_stdout
+print("This goes to console")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: Module path management</h4>
+            <pre><code>import sys
+import os
+
+# Add custom module path
+custom_path = os.path.join(os.getcwd(), 'custom_modules')
+if custom_path not in sys.path:
+    sys.path.insert(0, custom_path)
+    print(f"Added {custom_path} to module path")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="datetime">3. datetime - Date and Time Handling</h2>
+        <p>Classes for manipulating dates and times.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>from datetime import datetime, date, time, timedelta
+
+# Current date/time
+datetime.now()                 # Current datetime
+date.today()                   # Current date
+time()                         # Time object
+
+# Create specific datetime
+datetime(2024, 1, 15, 14, 30)  # Year, month, day, hour, minute
+date(2024, 1, 15)              # Year, month, day
+
+# Time arithmetic
+timedelta(days=7, hours=2)     # Time difference
+
+# String conversion
+datetime.strptime(string, format)   # String to datetime
+datetime.strftime(format)           # Datetime to string
+
+# Common format codes:
+# %Y - Year (4 digits)    %m - Month (01-12)    %d - Day (01-31)
+# %H - Hour (00-23)       %M - Minute (00-59)   %S - Second (00-59)</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: Days until birthday</h4>
+            <pre><code>from datetime import datetime, date
+
+def days_until_birthday(birth_month, birth_day):
+    today = date.today()
+    next_birthday = date(today.year, birth_month, birth_day)
+    
+    if next_birthday < today:
+        next_birthday = date(today.year + 1, birth_month, birth_day)
+    
+    return (next_birthday - today).days
+
+days = days_until_birthday(12, 25)
+print(f"Days until birthday: {days}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Age calculator</h4>
+            <pre><code>from datetime import date
+
+def calculate_age(birth_date):
+    today = date.today()
+    age = today.year - birth_date.year
+    
+    # Adjust if birthday hasn't occurred this year
+    if (today.month, today.day) < (birth_date.month, birth_date.day):
+        age -= 1
+    
+    return age
+
+birthdate = date(1990, 5, 15)
+print(f"Age: {calculate_age(birthdate)} years")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: Date formatting</h4>
+            <pre><code>from datetime import datetime
+
+now = datetime.now()
+
+# Different formats
+print(now.strftime("%Y-%m-%d"))           # 2026-01-24
+print(now.strftime("%B %d, %Y"))          # January 24, 2026
+print(now.strftime("%I:%M %p"))           # 02:30 PM
+print(now.strftime("%A, %B %d, %Y"))      # Saturday, January 24, 2026</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: Business days calculator</h4>
+            <pre><code>from datetime import datetime, timedelta
+
+def add_business_days(start_date, days):
+    current = start_date
+    while days > 0:
+        current += timedelta(days=1)
+        # Skip weekends (5=Saturday, 6=Sunday)
+        if current.weekday() < 5:
+            days -= 1
+    return current
+
+start = datetime(2026, 1, 24)
+result = add_business_days(start, 10)
+print(f"10 business days later: {result.strftime('%Y-%m-%d')}")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="random">4. random - Random Number Generation</h2>
+        <p>Generate pseudo-random numbers and make random selections.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>import random
+
+# Random numbers
+random.random()                # Float [0.0, 1.0)
+random.uniform(a, b)           # Float [a, b]
+random.randint(a, b)           # Integer [a, b] inclusive
+random.randrange(start, stop, step)  # Random from range
+
+# Random selection
+random.choice(sequence)        # Single random element
+random.choices(population, k=n)  # n elements (with replacement)
+random.sample(population, k)   # k unique elements
+
+# Shuffling
+random.shuffle(list)           # Shuffle list in place
+
+# Seeding
+random.seed(n)                 # Set random seed for reproducibility</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: Dice simulator</h4>
+            <pre><code>import random
+from collections import Counter
+
+# Roll two dice 1000 times
+rolls = [random.randint(1, 6) + random.randint(1, 6) 
+         for _ in range(1000)]
+
+freq = Counter(rolls)
+print("Sum | Frequency")
+print("-" * 20)
+for sum_val in sorted(freq.keys()):
+    print(f"{sum_val:3} | {freq[sum_val]}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Password generator</h4>
+            <pre><code>import random
+import string
+
+def generate_password(length=12):
+    chars = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(random.choice(chars) for _ in range(length))
+
+password = generate_password(16)
+print(f"Generated password: {password}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: Lottery number picker</h4>
+            <pre><code>import random
+
+def pick_lottery_numbers(total_numbers=49, pick=6):
+    return sorted(random.sample(range(1, total_numbers + 1), pick))
+
+numbers = pick_lottery_numbers()
+print(f"Your lucky numbers: {numbers}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: Random team selector</h4>
+            <pre><code>import random
+
+def create_teams(players, team_size):
+    shuffled = players.copy()
+    random.shuffle(shuffled)
+    
+    teams = []
+    for i in range(0, len(shuffled), team_size):
+        teams.append(shuffled[i:i + team_size])
+    return teams
+
+players = ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank']
+teams = create_teams(players, 2)
+for i, team in enumerate(teams, 1):
+    print(f"Team {i}: {team}")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="math">5. math - Mathematical Functions</h2>
+        <p>Mathematical functions and constants.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>import math
+
+# Constants
+math.pi                        # Pi (3.14159...)
+math.e                         # Euler's number (2.71828...)
+math.inf                       # Infinity
+math.nan                       # Not a Number
+
+# Basic functions
+math.sqrt(x)                   # Square root
+math.pow(x, y)                 # x to the power y
+math.ceil(x)                   # Round up
+math.floor(x)                  # Round down
+math.trunc(x)                  # Truncate to integer
+math.fabs(x)                   # Absolute value
+
+# Trigonometry (angles in radians)
+math.sin(x), math.cos(x), math.tan(x)
+math.asin(x), math.acos(x), math.atan(x)
+math.degrees(x)                # Radians to degrees
+math.radians(x)                # Degrees to radians
+
+# Logarithms
+math.log(x)                    # Natural log
+math.log10(x)                  # Base 10 log
+math.log2(x)                   # Base 2 log
+
+# Other
+math.factorial(n)              # n!
+math.gcd(a, b)                 # Greatest common divisor
+math.isnan(x), math.isinf(x)   # Check for nan/inf</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: Distance calculator</h4>
+            <pre><code>import math
+
+def distance_2d(x1, y1, x2, y2):
+    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+def distance_3d(x1, y1, z1, x2, y2, z2):
+    return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+
+print(f"2D Distance: {distance_2d(0, 0, 3, 4)}")      # 5.0
+print(f"3D Distance: {distance_3d(0,0,0, 1,1,1)}")    # 1.732...</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Circle calculations</h4>
+            <pre><code>import math
+
+def circle_properties(radius):
+    area = math.pi * radius ** 2
+    circumference = 2 * math.pi * radius
+    return {
+        'area': round(area, 2),
+        'circumference': round(circumference, 2)
+    }
+
+props = circle_properties(5)
+print(f"Circle with radius 5:")
+print(f"  Area: {props['area']}")
+print(f"  Circumference: {props['circumference']}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: Compound interest</h4>
+            <pre><code>import math
+
+def compound_interest(principal, rate, time, n=12):
+    """
+    principal: initial amount
+    rate: annual interest rate (decimal)
+    time: years
+    n: compounds per year
+    """
+    amount = principal * math.pow(1 + rate/n, n*time)
+    return round(amount, 2)
+
+result = compound_interest(1000, 0.05, 10)
+print(f"$1000 at 5% for 10 years: ${result}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: Triangle solver</h4>
+            <pre><code>import math
+
+def solve_triangle(a, b, angle_c_degrees):
+    """Calculate third side using law of cosines"""
+    angle_c = math.radians(angle_c_degrees)
+    c = math.sqrt(a**2 + b**2 - 2*a*b*math.cos(angle_c))
+    
+    # Calculate other angles using law of sines
+    angle_a = math.asin(a * math.sin(angle_c) / c)
+    angle_b = math.pi - angle_a - angle_c
+    
+    return {
+        'side_c': round(c, 2),
+        'angle_a': round(math.degrees(angle_a), 2),
+        'angle_b': round(math.degrees(angle_b), 2)
+    }
+
+result = solve_triangle(5, 7, 60)
+print(f"Triangle solution: {result}")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="json">6. json - JSON Encoding and Decoding</h2>
+        <p>Encode and decode JSON data.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>import json
+
+# String conversion
+json.dumps(obj)                # Python object to JSON string
+json.loads(string)             # JSON string to Python object
+
+# File operations
+json.dump(obj, file)           # Write to file
+json.load(file)                # Read from file
+
+# Options
+json.dumps(obj, indent=4)      # Pretty print with indentation
+json.dumps(obj, sort_keys=True)  # Sort dictionary keys</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: Save and load user data</h4>
+            <pre><code>import json
+
+user_data = {
+    "name": "Alice",
+    "age": 30,
+    "email": "alice@example.com",
+    "hobbies": ["reading", "coding", "hiking"]
+}
+
+# Save to file
+with open('user.json', 'w') as f:
+    json.dump(user_data, f, indent=2)
+
+# Load from file
+with open('user.json', 'r') as f:
+    loaded = json.load(f)
+    print(f"Loaded: {loaded['name']}, age {loaded['age']}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Configuration manager</h4>
+            <pre><code>import json
+
+class ConfigManager:
+    def __init__(self, filename='config.json'):
+        self.filename = filename
+        self.config = self.load()
+    
+    def load(self):
+        try:
+            with open(self.filename, 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
+    
+    def save(self):
+        with open(self.filename, 'w') as f:
+            json.dump(self.config, f, indent=2)
+    
+    def get(self, key, default=None):
+        return self.config.get(key, default)
+    
+    def set(self, key, value):
+        self.config[key] = value
+        self.save()
+
+config = ConfigManager()
+config.set('theme', 'dark')
+print(f"Theme: {config.get('theme')}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: API response parser</h4>
+            <pre><code>import json
+
+# Simulate API response
+api_response = '''
+{
+    "status": "success",
+    "data": {
+        "users": [
+            {"id": 1, "name": "Alice"},
+            {"id": 2, "name": "Bob"}
+        ]
+    }
+}
+'''
+
+parsed = json.loads(api_response)
+if parsed['status'] == 'success':
+    for user in parsed['data']['users']:
+        print(f"User {user['id']}: {user['name']}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: Convert CSV to JSON</h4>
+            <pre><code>import json
+import csv
+
+def csv_to_json(csv_file, json_file):
+    data = []
+    with open(csv_file, 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            data.append(row)
+    
+    with open(json_file, 'w') as f:
+        json.dump(data, f, indent=2)
+    
+    return len(data)
+
+# Usage (assuming data.csv exists):
+# count = csv_to_json('data.csv', 'data.json')
+# print(f"Converted {count} records")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="re">7. re - Regular Expressions</h2>
+        <p>Pattern matching with regular expressions.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>import re
+
+# Search functions
+re.search(pattern, string)     # Search anywhere
+re.match(pattern, string)      # Match at beginning
+re.fullmatch(pattern, string)  # Match entire string
+re.findall(pattern, string)    # Find all occurrences
+re.finditer(pattern, string)   # Iterator of matches
+
+# Substitution
+re.sub(pattern, repl, string)  # Replace matches
+re.subn(pattern, repl, string) # Replace and count
+
+# Split
+re.split(pattern, string)      # Split by pattern
+
+# Common patterns:
+# .  - Any character         \d - Digit         \w - Word character
+# \s - Whitespace            ^  - Start         $  - End
+# *  - 0 or more             +  - 1 or more     ? - 0 or 1
+# [] - Character class       () - Group         | - OR</code></pre>
+
+        <div class="example-box">
+            <h4>Example Problem 1: Email extractor</h4>
+            <pre><code>import re
+
+def extract_emails(text):
+    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    return re.findall(pattern, text)
+
+text = """
+Contact us at info@example.com or support@test.org
+Sales: sales@company.co.uk
+"""
+
+emails = extract_emails(text)
+print(f"Found emails: {emails}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 2: Phone number validator</h4>
+            <pre><code>import re
+
+def validate_phone(number):
+    # Matches: (123) 456-7890, 123-456-7890, 1234567890
+    patterns = [
+        r'^\(\d{3}\)\s\d{3}-\d{4}$',
+        r'^\d{3}-\d{3}-\d{4}$',
+        r'^\d{10}$'
+    ]
+    
+    return any(re.match(pattern, number) for pattern in patterns)
+
+phones = ['(555) 123-4567', '555-123-4567', '5551234567', 'invalid']
+for phone in phones:
+    print(f"{phone}: {validate_phone(phone)}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 3: Password strength checker</h4>
+            <pre><code>import re
+
+def check_password_strength(password):
+    if len(password) < 8:
+        return "Weak: Too short"
+    
+    checks = {
+        'uppercase': r'[A-Z]',
+        'lowercase': r'[a-z]',
+        'digit': r'\d',
+        'special': r'[!@#$%^&*(),.?":{}|<>]'
+    }
+    
+    score = sum(bool(re.search(pattern, password)) 
+                for pattern in checks.values())
+    
+    if score == 4:
+        return "Strong"
+    elif score >= 2:
+        return "Medium"
+    else:
+        return "Weak"
+
+passwords = ['pass', 'Password1', 'P@ssw0rd!']
+for pwd in passwords:
+    print(f"{pwd}: {check_password_strength(pwd)}")</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>Example Problem 4: Extract hashtags from text</h4>
+            <pre><code>import re
+
+def extract_hashtags(text):
+    pattern = r'#\w+'
+    return re.findall(pattern, text)
+
+def extract_mentions(text):
+    pattern = r'@\w+'
+    return re.findall(pattern, text)
+
+tweet = "Check out #Python and #coding! Thanks @alice @bob"
+print(f"Hashtags: {extract_hashtags(tweet)}")
+print(f"Mentions: {extract_mentions(tweet)}")</code></pre>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 id="collections">8. collections - Specialized Container Datatypes</h2>
+        <p>High-performance container datatypes.</p>
+        
+        <h3>Basic Syntax</h3>
+        <pre><code>from collections import Counter, defaultdict, deque, namedtuple, OrderedDict
+
+# Counter - count hashable objects
+Counter(iterable)              
+counter.most_common(n)         # n most common elements
+counter.update(iterable)       # Add counts
+
+# defaultdict - dict with default values
+defaultdict(default_factory)   
+
+# deque - double-ended queue
+de
