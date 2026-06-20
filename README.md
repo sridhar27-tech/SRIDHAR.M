@@ -4,7 +4,7 @@
 
 
 **AI/ML Engineer | Data Scientist | Mental Health AI Researcher | |Data Analysist |**  
-📧 your.email@example.com | 🔗 [linkedin.com/in/sridhar-ai](https://linkedin.com/in/sridhar-ai) | 🐙 [github.com/sridhar-ai](https://github.com/sridhar27-tech) | 📍 Krishnagiri, Tamil Nadu, India
+📧 sdhar7866@gmail.com | 🔗 [linkedin.com/in/sridhar-ai](https://linkedin.com/in/sridhar-m27) | 🐙 [github.com/sridhar-ai](https://github.com/sridhar27-tech) | 📍 Krishnagiri, Tamil Nadu, India
 
 ---
 
