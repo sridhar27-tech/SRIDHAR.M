@@ -1,6 +1,6 @@
 # SRIDHAR.M
 
-![SRIDHAR M](akka product.jpg)
+![SRIDHAR M](akkaproduct.jpg)
 
 
 **AI/ML Engineer | Data Scientist | Mental Health AI Researcher | |Data Analysist |**  
