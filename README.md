@@ -4,7 +4,7 @@
 
 
 **AI/ML Engineer | Data Scientist | Mental Health AI Researcher | |Data Analysist |**  
-📧 your.email@example.com | 🔗 [linkedin.com/in/sridhar-ai](https://linkedin.com/in/sridhar-ai) | 🐙 [github.com/sridhar-ai](https://github.com/sridhar-ai) | 📍 Krishnagiri, Tamil Nadu, India
+📧 your.email@example.com | 🔗 [linkedin.com/in/sridhar-ai](https://linkedin.com/in/sridhar-ai) | 🐙 [github.com/sridhar-ai](https://github.com/sridhar27-tech) | 📍 Krishnagiri, Tamil Nadu, India
 
 ---
 
@@ -122,9 +122,9 @@ Explainable AI (XAI), Natural Language Processing (NLP), Privacy-Preserving Mach
 ---
 
 ### 📬 Let's Connect
-- **Email**: your.email@example.com  
-- **LinkedIn**: [linkedin.com/in/sridhar-ai](https://linkedin.com/in/sridhar-ai)  
-- **GitHub**: [github.com/sridhar-ai](https://github.com/sridhar-ai)  
+- **Email**: sdhar7866@gmail.com
+- **LinkedIn**: [linkedin.com/in/sridhar-ai](https://linkedin.com/in/sridhar-m27)  
+- **GitHub**: [github.com/sridhar-ai](https://github.com/sridhar27-tech)  
 
 ---
 
