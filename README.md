@@ -84,16 +84,7 @@ Explainable AI (XAI), Natural Language Processing (NLP), Privacy-Preserving Mach
 
 ### 📜 Certifications
 
-- **Deep Learning Specialization** – Coursera (Andrew Ng)  
-- **Machine Learning** – Coursera (Andrew Ng)  
-- **Natural Language Processing Specialization** – DeepLearning.AI  
-- **TensorFlow Developer Certificate** – TensorFlow  
-- **Hugging Face NLP Course** – Hugging Face  
-- **Introduction to MLOps** – Coursera (Google Cloud)  
-- **Responsible AI Practices** – Google Cloud / Coursera  
-- **Python for Data Science and Machine Learning** – IBM  
-- **Mental Health and AI Ethics** – (Relevant platform/course)  
-- **Advanced Prompt Engineering** – (Any recent course)  
+[https://github.com/sridhar27-tech/Certificates-of-mine/tree/2e6a051d7498514515688618a5c52a2b2a058e8c/certificates](https://github.com/sridhar27-tech/Certificates-of-mine/tree/2e6a051d7498514515688618a5c52a2b2a058e8c/certificates)
 
 *(Replace with your actual certifications, add completion dates and links where possible)*
 
